@@ -1,0 +1,93 @@
+@import "./reset.css";
+@import "./colors.css";
+@import "./fonts.css";
+
+body {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: var(--font-regular);
+    line-height: 150%;
+    color: var(--primary-text);
+}
+
+/* Shared */
+
+.section-title {
+    font-family: "Hanuman", serif;
+    font-weight: 400;
+    font-size: var(--font-heading);
+    line-height: 120%;
+    letter-spacing: -0.01em;
+}
+
+.section-text {
+    font-size: var(--font-medium);
+}
+
+/* Header */
+
+.header-button {
+    font-weight: 500;
+}
+
+/* Hero */
+
+.hero-title {
+    font-family: "Hanuman", serif;
+    font-weight: 400;
+    font-size: var(--font-hero-title);
+    line-height: 120%;
+    letter-spacing: -0.01em;
+}
+
+.hero-button {
+    font-weight: 500;
+}
+
+/* Product cards (bestsellers + bouquets) */
+
+.product-card-title {
+    font-weight: 600;
+    font-size: var(--font-medium);
+}
+
+.product-card-text {
+    font-size: var(--font-small);
+}
+
+.product-card-price {
+    font-weight: 600;
+    font-size: var(--font-price);
+}
+
+/* Bouquets */
+
+.bouquets-button {
+    font-weight: 500;
+}
+
+/* Feedback */
+
+.feedback-author {
+    font-weight: 600;
+}
+
+/* Contacts */
+
+.contacts-tagline {
+    font-weight: 600;
+}
+
+.contacts-info-title {
+    font-family: "Hanuman", serif;
+    font-weight: 400;
+    font-size: var(--font-medium);
+    line-height: 140%;
+    letter-spacing: -0.01em;
+}
+
+/* Footer */
+
+.footer-copyright {
+    font-size: var(--font-small);
+}
