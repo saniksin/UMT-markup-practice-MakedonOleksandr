@@ -36,6 +36,16 @@ body {
     padding: 10px 24px;
 }
 
+.primary-button:hover {
+    opacity: 0.5;
+}
+
+.primary-button:active {
+    opacity: 1;
+    background: var(--button-clicked-bg);
+    color: var(--button-clicked-text);
+}
+
 .header-button {
     padding: 8px 20px;
 }
