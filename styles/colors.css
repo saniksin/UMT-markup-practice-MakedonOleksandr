@@ -1,4 +1,9 @@
 :root {
     --primary-text: #030c01;
     --primary-bg: #ffffff;
+    --footer-bg: #eeee60;
+
+    /* Button gradient */
+    --button-gradient-start: #e8e81c;
+    --button-gradient-end: #42ed13;
 }

@@ -27,8 +27,8 @@
 		<!-- Navbar -->
 		<header class="header">
 			<nav class="header-nav">
-				<a class="header-logo" href="#">
-					<svg>
+				<a href="#">
+					<svg class="header-logo">
 						<use href="./icons/sprite.svg#flora-logo"></use>
 					</svg>
 				</a>
@@ -41,7 +41,7 @@
 				</ul>
 			</nav>
 
-			<a class="header-button" href="#bouquets">Explore Bouquets</a>
+			<a class="primary-button header-button" href="#bouquets">Explore Bouquets</a>
 		</header>
 
 		<main>
@@ -54,10 +54,8 @@
 						designed to bring joy and elegance to your celebrations.
 					</p>
 
-					<a class="hero-button" href="#bouquets">Explore Our Bestsellers</a>
+					<a class="primary-button hero-button" href="#bouquets">Explore Our Bestsellers</a>
 				</div>
-
-				<img class="hero-image" src="./images/hero-bg.jpg" alt="A stunning flower bouquet arrangement with roses, peonies and greenery" />
 			</section>
 
 			<!-- About Section -->
@@ -85,7 +83,7 @@
 					<li class="bestsellers-item">
 						<article class="product-card">
 							<img
-								class="product-card-image"
+								class="bestsellers-card-image"
 								src="./images/spring-elegance.jpg"
 								alt="Spring Elegance bouquet — a woman holding a beautiful spring flower bouquet"
 							/>
@@ -97,7 +95,7 @@
 
 					<li class="bestsellers-item">
 						<article class="product-card">
-							<img class="product-card-image" src="./images/berry-chic.jpg" alt="Berry Chic bouquet — bridal arrangement with roses and berries" />
+							<img class="bestsellers-card-image" src="./images/berry-chic.jpg" alt="Berry Chic bouquet — bridal arrangement with roses and berries" />
 							<h3 class="product-card-title">Berry Chic</h3>
 							<p class="product-card-text">
 								A stylish composition of roses, seasonal greenery, and vibrant berries — a bold and elegant floral
@@ -109,7 +107,7 @@
 
 					<li class="bestsellers-item">
 						<article class="product-card">
-							<img class="product-card-image" src="./images/lavender-dream.jpg" alt="Lavender Dream bouquet — mixed flowers on a wooden table" />
+							<img class="bestsellers-card-image" src="./images/lavender-dream.jpg" alt="Lavender Dream bouquet — mixed flowers on a wooden table" />
 							<h3 class="product-card-title">Lavender Dream</h3>
 							<p class="product-card-text">
 								A rich bouquet with lavender, lisianthus, and roses — ideal for those who love deep hues and gentle
@@ -131,12 +129,12 @@
 
 				<div class="bestsellers-nav">
 					<button class="bestsellers-nav-button" type="button" aria-label="Previous bouquets">
-						<svg>
+						<svg class="bestsellers-nav-icon">
 							<use href="./icons/sprite.svg#arrow_back"></use>
 						</svg>
 					</button>
 					<button class="bestsellers-nav-button" type="button" aria-label="Next bouquets">
-						<svg>
+						<svg class="bestsellers-nav-icon">
 							<use href="./icons/sprite.svg#arrow_forward"></use>
 						</svg>
 					</button>
@@ -152,7 +150,7 @@
 					<li class="bouquets-item">
 						<article class="product-card">
 							<img
-								class="product-card-image"
+								class="bouquets-card-image"
 								src="./images/peach-meadow.jpg"
 								alt="Peach Meadow — soft arrangement of peach and blush roses in a straw basket"
 							/>
@@ -168,7 +166,7 @@
 					<li class="bouquets-item">
 						<article class="product-card">
 							<img
-								class="product-card-image"
+								class="bouquets-card-image"
 								src="./images/blush-romance.jpg"
 								alt="Blush Romance — deep pink and ivory roses with silver eucalyptus"
 							/>
@@ -184,7 +182,7 @@
 					<li class="bouquets-item">
 						<article class="product-card">
 							<img
-								class="product-card-image"
+								class="bouquets-card-image"
 								src="./images/pastel-garden.jpg"
 								alt="Pastel Garden — pastel-toned spray roses and greenery in a woven basket"
 							/>
@@ -199,7 +197,7 @@
 
 					<li class="bouquets-item">
 						<article class="product-card">
-							<img class="product-card-image" src="./images/tulip-charm.jpg" alt="Tulip Charm — bright tulips and roses in a lavender box" />
+							<img class="bouquets-card-image" src="./images/tulip-charm.jpg" alt="Tulip Charm — bright tulips and roses in a lavender box" />
 							<h3 class="product-card-title">Tulip Charm</h3>
 							<p class="product-card-text">A vivid bouquet of bright tulips and roses in a lavender box — cheerful and full of charm.</p>
 							<p class="product-card-price">$61</p>
@@ -209,7 +207,7 @@
 					<li class="bouquets-item">
 						<article class="product-card">
 							<img
-								class="product-card-image"
+								class="bouquets-card-image"
 								src="./images/berry-bloom.jpg"
 								alt="Berry Bloom — rich pink, purple, and cream blooms with textured greens"
 							/>
@@ -222,7 +220,7 @@
 					<li class="bouquets-item">
 						<article class="product-card">
 							<img
-								class="product-card-image"
+								class="bouquets-card-image"
 								src="./images/sweet-whisper.jpg"
 								alt="Sweet Whisper — spring bouquet with peonies, roses and lilac accents"
 							/>
@@ -237,7 +235,7 @@
 					<li class="bouquets-item">
 						<article class="product-card">
 							<img
-								class="product-card-image"
+								class="bouquets-card-image"
 								src="./images/field-joy.jpg"
 								alt="Field Joy — rustic bouquet of sunflowers, lisianthus and daisies"
 							/>
@@ -251,7 +249,7 @@
 
 					<li class="bouquets-item">
 						<article class="product-card">
-							<img class="product-card-image" src="./images/soft-bloom.jpg" alt="Soft Bloom — pink carnations and roses wrapped in satin paper" />
+							<img class="bouquets-card-image" src="./images/soft-bloom.jpg" alt="Soft Bloom — pink carnations and roses wrapped in satin paper" />
 							<h3 class="product-card-title">Soft Bloom</h3>
 							<p class="product-card-text">
 								A delicate bouquet of pink carnations and roses wrapped in satin paper — soft, stylish, and versatile.
@@ -261,7 +259,7 @@
 					</li>
 				</ul>
 
-				<button class="bouquets-button" type="button">Show More</button>
+				<button class="primary-button bouquets-button" type="button">Show More</button>
 			</section>
 
 			<!-- Testimonials -->
@@ -293,12 +291,12 @@
 
 				<div class="feedback-nav">
 					<button class="feedback-nav-button" type="button" aria-label="Previous testimonials">
-						<svg>
+						<svg class="feedback-nav-icon">
 							<use href="./icons/sprite.svg#arrow_back"></use>
 						</svg>
 					</button>
 					<button class="feedback-nav-button" type="button" aria-label="Next testimonials">
-						<svg>
+						<svg class="feedback-nav-icon">
 							<use href="./icons/sprite.svg#arrow_forward"></use>
 						</svg>
 					</button>
@@ -336,7 +334,7 @@
 		<!-- Footer -->
 		<footer class="footer">
 			<a class="footer-logo" href="#">
-				<svg>
+				<svg class="footer-logo">
 					<use href="./icons/sprite.svg#flora-logo"></use>
 				</svg>
 			</a>
@@ -354,21 +352,21 @@
 			<ul class="footer-social">
 				<li class="footer-social-item">
 					<a class="footer-social-link" href="#" aria-label="Facebook">
-						<svg>
+						<svg class="footer-social-icon">
 							<use href="./icons/sprite.svg#facebook"></use>
 						</svg>
 					</a>
 				</li>
 				<li class="footer-social-item">
 					<a class="footer-social-link" href="#" aria-label="Instagram">
-						<svg>
+						<svg class="footer-social-icon">
 							<use href="./icons/sprite.svg#instagram"></use>
 						</svg>
 					</a>
 				</li>
 				<li class="footer-social-item">
 					<a class="footer-social-link" href="#" aria-label="X (Twitter)">
-						<svg>
+						<svg class="footer-social-icon">
 							<use href="./icons/sprite.svg#twitter"></use>
 						</svg>
 					</a>
