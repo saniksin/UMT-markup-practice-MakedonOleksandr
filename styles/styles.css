@@ -1,0 +1,221 @@
+@import "./reset.css";
+@import "./colors.css";
+@import "./fonts.css";
+
+body {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: var(--font-regular);
+    line-height: 150%;
+    color: var(--primary-text);
+}
+
+/* Shared */
+
+.section-title {
+    font-family: "Hanuman", serif;
+    font-weight: 400;
+    font-size: var(--font-heading);
+    line-height: 120%;
+    letter-spacing: -0.01em;
+}
+
+.section-text {
+    font-size: var(--font-medium);
+}
+
+.primary-button {
+    display: inline-block;
+    font-weight: 500;
+    font-size: var(--font-regular);
+    line-height: 150%;
+    color: var(--primary-text);
+    background: linear-gradient(to bottom right, var(--button-gradient-start), var(--button-gradient-end));
+    border: none;
+    border-radius: 100px;
+    padding: 10px 24px;
+}
+
+.primary-button:hover {
+    opacity: 0.5;
+}
+
+.primary-button:active {
+    opacity: 1;
+    background: var(--button-clicked-bg);
+    color: var(--button-clicked-text);
+}
+
+.header-button {
+    padding: 8px 20px;
+}
+
+.bouquets-button {
+    width: 406px;
+}
+
+/* Header */
+
+.header-logo {
+    width: 84px;
+    height: 36px;
+}
+
+/* Hero */
+
+.hero-title {
+    font-family: "Hanuman", serif;
+    font-weight: 400;
+    font-size: var(--font-hero-title);
+    line-height: 120%;
+    letter-spacing: -0.01em;
+}
+
+.hero {
+    width: 100%;
+    height: 669px;
+    background-image: url("../images/hero-bg.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+/* About */
+
+.about-icon {
+    width: 96px;
+    height: 85px;
+}
+
+.about-image {
+    width: 600px;
+    height: 428px;
+    border-radius: 16px;
+}
+
+/* Product cards (bestsellers + bouquets) */
+
+.product-card-title {
+    font-weight: 600;
+    font-size: var(--font-medium);
+}
+
+.product-card-text {
+    font-size: var(--font-small);
+}
+
+.product-card-price {
+    font-weight: 600;
+    font-size: var(--font-price);
+}
+
+/* Bestsellers */
+
+.bestsellers-card-image {
+    width: 405px;
+    height: 320px;
+    border-radius: 16px;
+}
+
+.bestsellers-dot {
+    width: 8px;
+    height: 8px;
+}
+
+.bestsellers-nav-button {
+    width: 48px;
+    height: 48px;
+    background-color: var(--primary-bg);
+    border: 1px solid #030c0126;
+    border-radius: 50%;
+    fill: var(--primary-text);
+}
+
+.bestsellers-nav-icon {
+    width: 24px;
+    height: 24px;
+}
+
+/* Bouquets */
+
+.bouquets-card-image {
+    width: 296px;
+    height: 296px;
+    border-radius: 16px;
+    object-fit: cover;
+}
+
+
+/* Feedback */
+
+.feedback-item {
+    border-radius: 16px;
+}
+
+.feedback-author {
+    font-weight: 600;
+}
+
+.feedback-nav-button {
+    width: 48px;
+    height: 48px;
+    background-color: var(--primary-bg);
+    border: 1px solid #030c0126;
+    border-radius: 50%;
+    fill: var(--primary-text);
+}
+
+.feedback-nav-icon {
+    width: 24px;
+    height: 24px;
+}
+
+/* Contacts */
+
+.contacts-tagline {
+    font-weight: 600;
+}
+
+.contacts-info-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.contacts-info-title {
+    font-family: "Hanuman", serif;
+    font-weight: 400;
+    font-size: var(--font-medium);
+    line-height: 140%;
+    letter-spacing: -0.01em;
+}
+
+.contacts-image {
+    width: 1280px;
+    height: 720px;
+    border-radius: 16px;
+}
+
+/* Footer */
+
+.footer {
+    background-color: var(--footer-bg);
+}
+
+.footer-logo {
+    width: 294px;
+    height: 126px;
+}
+
+.footer-social-link {
+    width: 24px;
+    height: 24px;
+}
+
+.footer-social-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.footer-copyright {
+    font-size: var(--font-small);
+}

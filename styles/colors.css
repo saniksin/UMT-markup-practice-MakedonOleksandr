@@ -1,0 +1,11 @@
+:root {
+    --primary-text: #030c01;
+    --primary-bg: #ffffff;
+    --footer-bg: #eeee60;
+
+    /* Button */
+    --button-gradient-start: #e8e81c;
+    --button-gradient-end: #42ed13;
+    --button-clicked-bg: #4e544d;
+    --button-clicked-text: #ffffff;
+}
