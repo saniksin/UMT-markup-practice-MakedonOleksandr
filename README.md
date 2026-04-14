@@ -4,7 +4,7 @@
 
 ## Live preview
 
-https://saniksin.github.io/UMT-markup-practice-MakedonOleksandr2/
+https://saniksin.github.io/UMT-markup-practice-MakedonOleksandr/
 
 ## Figma
 
