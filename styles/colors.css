@@ -3,11 +3,19 @@
 	--primary-bg: #ffffff;
 	--footer-bg: #eeee60;
 
-	/* Button */
+	/* Button (Primary) */
 	--button-gradient-start: #e8e81c;
 	--button-gradient-end: #42ed13;
 	--button-clicked-bg: #4e544d;
 	--button-clicked-text: #ffffff;
+
+	/* Slider arrows */
+	--slider-arrow-bg: #ffffff;
+	--slider-arrow-hover-bg: #d9fbcf;
+	--slider-arrow-active-bg: #7af259;
+
+	/* Hero fallback (shown under bg image if it fails to load) */
+	--hero-fallback-bg: #d9d9d9;
 
 	/* Borders */
 	--border-color: #030c01;

@@ -22,6 +22,15 @@
 			rel="stylesheet"
 		/>
 
+		<!-- AOS -->
+		<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+		<!-- Animate.css -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+		/>
+
 		<!-- Styles -->
 		<link rel="stylesheet" href="./styles/styles.css" />
 	</head>
@@ -39,24 +48,24 @@
 				<nav class="header-nav">
 					<ul class="header-nav-list">
 						<li>
-							<a class="header-nav-link" href="#about">About Us</a>
+							<a class="header-nav-link general-link" href="#about">About Us</a>
 						</li>
 						<li>
-							<a class="header-nav-link" href="#bestsellers">Bestsellers</a>
+							<a class="header-nav-link general-link" href="#bestsellers">Bestsellers</a>
 						</li>
 						<li>
-							<a class="header-nav-link" href="#bouquets">Bouquets</a>
+							<a class="header-nav-link general-link" href="#bouquets">Bouquets</a>
 						</li>
 						<li>
-							<a class="header-nav-link" href="#feedback">Feedback</a>
+							<a class="header-nav-link general-link" href="#feedback">Feedback</a>
 						</li>
 						<li>
-							<a class="header-nav-link" href="#contacts">Contacts</a>
+							<a class="header-nav-link general-link" href="#contacts">Contacts</a>
 						</li>
 					</ul>
 				</nav>
 				<div class="header-actions">
-					<a class="primary-button header-button" href="#bouquets">Explore Bouquets</a>
+					<button type="button" class="primary-button header-button">Explore Bouquets</button>
 				</div>
 			</div>
 		</header>
@@ -65,7 +74,7 @@
 			<!-- Hero Section -->
 			<section class="hero" id="hero">
 				<div class="container hero-container">
-					<div class="hero-content">
+					<div class="hero-content" data-aos="fade-right" data-aos-delay="150">
 						<h1 class="hero-title">Brighten Your Day with Our Stunning Bouquets</h1>
 						<div class="hero-body">
 							<p class="section-text">
@@ -73,7 +82,7 @@
 								are designed to bring joy and elegance to your celebrations.
 							</p>
 
-							<a class="primary-button hero-button" href="#bestsellers">Explore Our Bestsellers</a>
+							<button type="button" class="primary-button hero-button">Explore Our Bestsellers</button>
 						</div>
 					</div>
 				</div>
@@ -82,7 +91,7 @@
 			<!-- About Section -->
 			<section class="about" id="about">
 				<div class="container about-container">
-					<div class="about-content">
+					<div class="about-content" data-aos="fade-right">
 						<svg class="about-icon">
 							<use href="./icons/sprite.svg#floral-icon"></use>
 						</svg>
@@ -100,12 +109,13 @@
 						class="about-image"
 						src="./images/about-florist.jpg"
 						alt="Female florist arranging white peony flowers in a shop"
+						data-aos="fade-left"
 					/>
 				</div>
 			</section>
 
 			<!-- Top-Selling Bouquets -->
-			<section class="bestsellers" id="bestsellers">
+			<section class="bestsellers" id="bestsellers" data-aos="fade-up-right">
 				<div class="container bestsellers-container">
 					<div class="bestsellers-title-row">
 						<h2 class="section-title">Top-Selling Bouquets</h2>
@@ -202,7 +212,7 @@
 			</section>
 
 			<!-- Bouquets Grid -->
-			<section class="bouquets" id="bouquets">
+			<section class="bouquets" id="bouquets" data-aos="zoom-in">
 				<div class="container bouquets-container">
 					<div class="bouquets-title">
 						<h2 class="section-title">Bouquets</h2>
@@ -374,7 +384,7 @@
 			</section>
 
 			<!-- Testimonials -->
-			<section class="feedback" id="feedback">
+			<section class="feedback" id="feedback" data-aos="fade-up">
 				<div class="container feedback-container">
 					<h2 class="section-title feedback-title">What our clients says</h2>
 
@@ -417,7 +427,7 @@
 			</section>
 
 			<!-- Contact -->
-			<section class="contacts" id="contacts">
+			<section class="contacts" id="contacts" data-aos="fade-up">
 				<div class="container contacts-container">
 					<div class="contacts-header">
 						<div class="contacts-intro">
@@ -435,7 +445,7 @@
 								</svg>
 								<div class="contacts-info-text">
 									<h3 class="contacts-info-title">Phone</h3>
-									<a class="contacts-info-link" href="tel:+15551234567">+1 (555) 123-4567</a>
+									<a class="contacts-info-link general-link" href="tel:+15551234567">+1 (555) 123-4567</a>
 								</div>
 							</div>
 
@@ -445,7 +455,15 @@
 								</svg>
 								<div class="contacts-info-text">
 									<h3 class="contacts-info-title">Store</h3>
-									<address class="contacts-info-address">456 Floral Ave, Sydney NSW 2000 AU</address>
+									<address>
+									<a
+										class="contacts-info-address general-link"
+										href="https://www.google.com/maps/search/?api=1&amp;query=456+Floral+Ave+Sydney+NSW+2000+AU"
+										target="_blank"
+										rel="noopener noreferrer"
+										>456 Floral Ave, Sydney NSW 2000 AU</a
+									>
+								</address>
 								</div>
 							</div>
 						</div>
@@ -473,19 +491,19 @@
 					<nav class="footer-nav">
 						<ul class="footer-nav-list">
 							<li>
-								<a class="footer-nav-link" href="#about">About Us</a>
+								<a class="footer-nav-link general-link" href="#about">About Us</a>
 							</li>
 							<li>
-								<a class="footer-nav-link" href="#bestsellers">Bestsellers</a>
+								<a class="footer-nav-link general-link" href="#bestsellers">Bestsellers</a>
 							</li>
 							<li>
-								<a class="footer-nav-link" href="#bouquets">Bouquets</a>
+								<a class="footer-nav-link general-link" href="#bouquets">Bouquets</a>
 							</li>
 							<li>
-								<a class="footer-nav-link" href="#feedback">Feedback</a>
+								<a class="footer-nav-link general-link" href="#feedback">Feedback</a>
 							</li>
 							<li>
-								<a class="footer-nav-link" href="#contacts">Contacts</a>
+								<a class="footer-nav-link general-link" href="#contacts">Contacts</a>
 							</li>
 						</ul>
 					</nav>
@@ -539,5 +557,16 @@
 				</div>
 			</div>
 		</footer>
+
+		<!-- AOS init -->
+		<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+		<script>
+			AOS.init({
+				duration: 800,
+				easing: "ease-out",
+				once: true,
+				offset: 100,
+			});
+		</script>
 	</body>
 </html>
