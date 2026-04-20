@@ -44,5 +44,11 @@
 <symbol id="twitter" viewBox="0 0 32 32">
     <path d="M22.901 5.657h3.68l-8.040 9.036 9.459 12.297h-7.405l-5.8-7.459-6.639 7.459h-3.683l8.6-9.667-9.073-11.667h7.593l5.244 6.816zM21.609 24.824h2.040l-13.164-17.115h-2.187z"></path>
 </symbol>
+<symbol id="menu" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"></path>
+</symbol>
+<symbol id="close" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M18.3 5.71L12 12.005l-6.3-6.295L4.29 7.12 10.585 13.415 4.29 19.71l1.41 1.41L12 14.825l6.3 6.295 1.41-1.41-6.295-6.295L19.71 7.12z"></path>
+</symbol>
 </defs>
 </svg>

@@ -26,13 +26,13 @@
 		<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
 
 		<!-- Animate.css -->
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-		/>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
 		<!-- Styles -->
 		<link rel="stylesheet" href="./styles/styles.css" />
+
+		<!-- Mobile menu -->
+		<script src="./js/mobile-menu.js" defer></script>
 	</head>
 	<body>
 		<!-- Navbar -->
@@ -65,8 +65,21 @@
 					</ul>
 				</nav>
 				<div class="header-actions">
-					<button type="button" class="primary-button header-button">Explore Bouquets</button>
+					<a class="primary-button header-button" href="#bouquets">Explore Bouquets</a>
 				</div>
+				<button
+					class="menu-button"
+					type="button"
+					aria-expanded="false"
+					aria-controls="mobile-menu"
+					aria-label="Toggle mobile menu"
+					data-menu-button
+				>
+					<svg class="menu-icon" aria-hidden="true">
+						<use href="./icons/sprite.svg#menu" class="menu-icon__burger"></use>
+						<use href="./icons/sprite.svg#close" class="menu-icon__close"></use>
+					</svg>
+				</button>
 			</div>
 		</header>
 
@@ -82,7 +95,7 @@
 								are designed to bring joy and elegance to your celebrations.
 							</p>
 
-							<button type="button" class="primary-button hero-button">Explore Our Bestsellers</button>
+							<a class="primary-button hero-button" href="#bestsellers">Explore Our Bestsellers</a>
 						</div>
 					</div>
 				</div>
@@ -456,14 +469,14 @@
 								<div class="contacts-info-text">
 									<h3 class="contacts-info-title">Store</h3>
 									<address>
-									<a
-										class="contacts-info-address general-link"
-										href="https://www.google.com/maps/search/?api=1&amp;query=456+Floral+Ave+Sydney+NSW+2000+AU"
-										target="_blank"
-										rel="noopener noreferrer"
-										>456 Floral Ave, Sydney NSW 2000 AU</a
-									>
-								</address>
+										<a
+											class="contacts-info-address general-link"
+											href="https://www.google.com/maps/search/?api=1&amp;query=456+Floral+Ave+Sydney+NSW+2000+AU"
+											target="_blank"
+											rel="noopener noreferrer"
+											>456 Floral Ave, Sydney NSW 2000 AU</a
+										>
+									</address>
 								</div>
 							</div>
 						</div>
@@ -557,6 +570,30 @@
 				</div>
 			</div>
 		</footer>
+
+		<!-- Mobile menu -->
+		<div class="mobile-menu" id="mobile-menu" aria-label="Mobile menu" data-menu>
+			<nav class="menu-navigation">
+				<ul class="menu-navigation-list">
+					<li>
+						<a class="menu-navigation-link general-link" href="#about">About Us</a>
+					</li>
+					<li>
+						<a class="menu-navigation-link general-link" href="#bestsellers">Bestsellers</a>
+					</li>
+					<li>
+						<a class="menu-navigation-link general-link" href="#bouquets">Bouquets</a>
+					</li>
+					<li>
+						<a class="menu-navigation-link general-link" href="#feedback">Feedback</a>
+					</li>
+					<li>
+						<a class="menu-navigation-link general-link" href="#contacts">Contacts</a>
+					</li>
+				</ul>
+			</nav>
+			<a class="primary-button menu-action-button" href="#bouquets">Explore Bouquets</a>
+		</div>
 
 		<!-- AOS init -->
 		<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
