@@ -308,11 +308,11 @@ body.menu-open .header {
 	overflow: hidden;
 }
 
-/* @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 	.hero {
-		background-image: url("../images/hero-bg.jpg");
+		background-image: url("../images/hero-bg@2x.jpg");
 	}
-} */
+}
 
 .hero-container {
 	width: 334px;
