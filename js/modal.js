@@ -124,10 +124,39 @@ function fillProductModal(card) {
 	productTextRef.textContent =
 		"Each stem is carefully selected to create a bouquet that radiates freshness, elegance, and the gentle charm of spring. Whether you're celebrating a birthday, sending love, or simply brightening someone's day, this arrangement is sure to bring warm smiles and lasting impressions.";
 
-	if (image) {
-		productImageRef.src = image.getAttribute("src") || "";
-		productImageRef.srcset = image.getAttribute("srcset") || "";
-		productImageRef.alt = image.getAttribute("alt") || title;
+	if (!image) return;
+
+	productImageRef.alt = image.getAttribute("alt") || title;
+
+	// The card markup uses density descriptors:
+	//   src="…@1x.jpg" srcset="…@2x.jpg 2x"
+	//
+	// The modal renders much wider than the card (mobile 295 vs ~340 card,
+	// tablet 308 vs ~340 card, desktop 536 vs ~405 card). With density-only
+	// descriptors the browser picks the @1x at DPR=1 and upscales it on
+	// desktop — that's the source of the blur the user reported. Convert to
+	// a width-descriptor srcset paired with the modal's `sizes` attribute
+	// so the browser can pick the larger asset whenever the modal needs
+	// more pixels than @1x supplies.
+	//
+	// We compute the @2x width as exactly 2× @1x.naturalWidth — every
+	// bouquet asset in this project is shipped as a 2:1 retina pair
+	// (e.g. 340/680, 405/810). The card image is already in the DOM, so
+	// its naturalWidth is available without an extra network probe.
+	const src1x = image.getAttribute("src") || "";
+	const cardSrcset = image.getAttribute("srcset") || "";
+	const m2x = cardSrcset.match(/(\S+)\s+2x/);
+	const src2x = m2x ? m2x[1] : "";
+	const w1 = image.naturalWidth;
+
+	if (src1x && src2x && w1 > 0) {
+		productImageRef.src = src1x;
+		productImageRef.srcset = `${src1x} ${w1}w, ${src2x} ${w1 * 2}w`;
+	} else {
+		// Fall back to the original density form if we couldn't read the
+		// natural width (e.g. card image hasn't loaded yet).
+		productImageRef.src = src1x;
+		productImageRef.srcset = cardSrcset;
 	}
 }
 
