@@ -56,6 +56,9 @@
 
 		<!-- Mobile menu -->
 		<script src="./js/mobile-menu.js" defer></script>
+
+		<!-- Modals -->
+		<script src="./js/modal.js" defer></script>
 	</head>
 	<body>
 		<!-- Navbar -->
@@ -162,7 +165,7 @@
 					<div class="bestsellers-body">
 						<ul class="bestsellers-list">
 							<li class="bestsellers-item">
-								<article class="product-card">
+								<article class="product-card" tabindex="0" role="button" data-product-trigger>
 									<img
 										loading="lazy"
 										class="bestsellers-card-image"
@@ -184,7 +187,7 @@
 							</li>
 
 							<li class="bestsellers-item">
-								<article class="product-card">
+								<article class="product-card" tabindex="0" role="button" data-product-trigger>
 									<img
 										loading="lazy"
 										class="bestsellers-card-image"
@@ -206,7 +209,7 @@
 							</li>
 
 							<li class="bestsellers-item">
-								<article class="product-card">
+								<article class="product-card" tabindex="0" role="button" data-product-trigger>
 									<img
 										loading="lazy"
 										class="bestsellers-card-image"
@@ -265,7 +268,7 @@
 
 					<ul class="bouquets-list">
 						<li class="bouquets-item">
-							<article class="product-card">
+							<article class="product-card" tabindex="0" role="button" data-product-trigger>
 								<img
 									loading="lazy"
 									class="bouquets-card-image"
@@ -287,7 +290,7 @@
 						</li>
 
 						<li class="bouquets-item">
-							<article class="product-card">
+							<article class="product-card" tabindex="0" role="button" data-product-trigger>
 								<img
 									loading="lazy"
 									class="bouquets-card-image"
@@ -309,7 +312,7 @@
 						</li>
 
 						<li class="bouquets-item">
-							<article class="product-card">
+							<article class="product-card" tabindex="0" role="button" data-product-trigger>
 								<img
 									loading="lazy"
 									class="bouquets-card-image"
@@ -331,7 +334,7 @@
 						</li>
 
 						<li class="bouquets-item">
-							<article class="product-card">
+							<article class="product-card" tabindex="0" role="button" data-product-trigger>
 								<img
 									loading="lazy"
 									class="bouquets-card-image"
@@ -352,7 +355,7 @@
 						</li>
 
 						<li class="bouquets-item">
-							<article class="product-card">
+							<article class="product-card" tabindex="0" role="button" data-product-trigger>
 								<img
 									loading="lazy"
 									class="bouquets-card-image"
@@ -373,7 +376,7 @@
 						</li>
 
 						<li class="bouquets-item">
-							<article class="product-card">
+							<article class="product-card" tabindex="0" role="button" data-product-trigger>
 								<img
 									loading="lazy"
 									class="bouquets-card-image"
@@ -395,7 +398,7 @@
 						</li>
 
 						<li class="bouquets-item">
-							<article class="product-card">
+							<article class="product-card" tabindex="0" role="button" data-product-trigger>
 								<img
 									loading="lazy"
 									class="bouquets-card-image"
@@ -417,7 +420,7 @@
 						</li>
 
 						<li class="bouquets-item">
-							<article class="product-card">
+							<article class="product-card" tabindex="0" role="button" data-product-trigger>
 								<img
 									loading="lazy"
 									class="bouquets-card-image"
@@ -642,6 +645,145 @@
 				</ul>
 			</nav>
 			<a class="primary-button menu-action-button" href="#bouquets">Explore Bouquets</a>
+		</div>
+
+		<!-- Product Details Modal -->
+		<div
+			class="modal-backdrop product-modal"
+			id="product-modal"
+			role="dialog"
+			aria-modal="true"
+			aria-labelledby="product-modal-title"
+			aria-describedby="product-modal-text"
+			data-modal
+			hidden
+		>
+			<div class="modal-window" role="document">
+				<button
+					type="button"
+					class="modal-close"
+					aria-label="Close product details"
+					data-modal-close
+				>
+					<svg class="modal-close-icon" aria-hidden="true">
+						<use href="./icons/sprite.svg#close"></use>
+					</svg>
+				</button>
+
+				<div class="product-modal-content" id="product-modal-content">
+					<img
+						class="product-modal-image"
+						id="product-modal-image"
+						src=""
+						srcset=""
+						alt=""
+					/>
+
+					<div class="product-modal-info">
+						<h2 class="product-modal-title" id="product-modal-title">Bouquet</h2>
+						<div class="product-modal-price-row">
+							<p class="product-modal-price" id="product-modal-price">$0</p>
+							<span class="product-modal-price-divider" aria-hidden="true"></span>
+						</div>
+						<p class="product-modal-text" id="product-modal-text">
+							Each stem is carefully selected to create a bouquet that radiates freshness, elegance, and the
+							gentle charm of spring. Whether you're celebrating a birthday, sending love, or simply
+							brightening someone's day, this arrangement is sure to bring warm smiles and lasting
+							impressions.
+						</p>
+
+						<div class="product-modal-actions">
+							<button
+								type="button"
+								class="primary-button product-modal-buy"
+								data-open-modal="order-modal"
+							>
+								Buy now
+							</button>
+							<input
+								type="number"
+								class="product-modal-quantity"
+								id="product-modal-quantity"
+								name="quantity"
+								min="1"
+								value="1"
+								aria-label="Quantity"
+							/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Order Modal -->
+		<div
+			class="modal-backdrop order-modal"
+			id="order-modal"
+			role="dialog"
+			aria-modal="true"
+			aria-labelledby="order-modal-title"
+			data-modal
+			hidden
+		>
+			<div class="modal-window" role="document">
+				<button type="button" class="modal-close" aria-label="Close order form" data-modal-close>
+					<svg class="modal-close-icon" aria-hidden="true">
+						<use href="./icons/sprite.svg#close"></use>
+					</svg>
+				</button>
+
+				<h2 class="order-modal-title" id="order-modal-title">Order</h2>
+
+				<form class="modal-form" id="order-form" novalidate>
+					<div class="modal-field">
+						<label class="modal-field-label" for="order-name">Name*</label>
+						<input
+							class="modal-field-input"
+							type="text"
+							id="order-name"
+							name="name"
+							placeholder="Ann"
+							required
+						/>
+					</div>
+
+					<div class="modal-field">
+						<label class="modal-field-label" for="order-phone">Phone*</label>
+						<input
+							class="modal-field-input"
+							type="tel"
+							id="order-phone"
+							name="phone"
+							placeholder="+1 (555) 123-4567"
+							required
+						/>
+					</div>
+
+					<div class="modal-field">
+						<label class="modal-field-label" for="order-address">Adress</label>
+						<input
+							class="modal-field-input"
+							type="text"
+							id="order-address"
+							name="address"
+							placeholder="456 Floral Ave, Sydney NSW 2000 AU"
+						/>
+					</div>
+
+					<div class="modal-field">
+						<label class="modal-field-label" for="order-message">Message</label>
+						<textarea
+							class="modal-field-textarea"
+							id="order-message"
+							name="message"
+							placeholder="Type your message..."
+							rows="5"
+						></textarea>
+					</div>
+
+					<button type="submit" class="primary-button order-modal-submit">Go to Checkout</button>
+				</form>
+			</div>
 		</div>
 
 		<!-- AOS init -->
