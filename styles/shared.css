@@ -95,6 +95,29 @@
 	display: none;
 }
 
+/* End-of-collection message — shown once Show More has loaded the last
+   chunk. Matches the section's body copy size and stays muted so it reads
+   as a status note, not a feature. */
+.bouquets-end-message {
+	margin-top: 16px;
+	font-size: var(--font-regular);
+	line-height: 150%;
+	color: var(--primary-text);
+	opacity: 0.6;
+	text-align: center;
+}
+
+.bouquets-end-message[hidden] {
+	display: none;
+}
+
+/* `display: inline-flex` on .primary-button overrides the browser-default
+   [hidden] { display: none } rule. Bring the default back so toggling the
+   `hidden` attribute on Show More (and any other primary button) works. */
+.primary-button[hidden] {
+	display: none !important;
+}
+
 /* Override the static-height grids from styles.css — those were sized
    for exactly 8 cards. The API-backed catalogue can render any count.
    On mobile rows auto-fit (Figma has variable 419/440 px there); on
@@ -128,9 +151,7 @@
 /* On mobile each row stacks naturally — keep the content flowing right
    after the image with no extra empty space. On tablet/desktop several
    cards share a row and may have different description lengths, so we
-   stretch content + pin price to the bottom so all four prices align.
-   Long descriptions also get clamped to 2 lines so they fit the Figma
-   row height (425 px on tablet, 440 px on desktop) without overflowing. */
+   stretch content + pin price to the bottom so all four prices align. */
 @media (min-width: 768px) {
 	.bouquets-item .product-card-content {
 		flex: 1;
@@ -140,7 +161,18 @@
 	.bouquets-item .product-card-price {
 		margin-top: auto;
 	}
+}
 
+/* Reserve exactly two lines of text height for every bestsellers card so
+   short descriptions don't pull the price up — keeps prices on a single
+   baseline across the row without touching the Figma layout. */
+.bestsellers-item .product-card-text {
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	min-height: calc(1.5em * 2);
 }
 
 /* Figma title height differs per breakpoint — mobile 103, tablet 76, the

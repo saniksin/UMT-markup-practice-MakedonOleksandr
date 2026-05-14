@@ -77,9 +77,9 @@ body {
 	padding: 8px 20px;
 	cursor: pointer;
 	transition:
-		opacity 250ms ease-in-out,
-		background 250ms ease-in-out,
-		color 250ms ease-in-out;
+		opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+		background 250ms cubic-bezier(0.4, 0, 0.2, 1),
+		color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .primary-button:hover,
@@ -105,7 +105,7 @@ body {
 /* General links (navigation, footer nav, contacts phone/email) */
 
 .general-link {
-	transition: opacity 250ms ease-in-out;
+	transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .general-link:hover,
@@ -217,12 +217,12 @@ body {
 
 .menu-icon__close {
 	opacity: 0;
-	transition: opacity 250ms ease-in-out;
+	transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .menu-icon__burger {
 	opacity: 1;
-	transition: opacity 250ms ease-in-out;
+	transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .menu-button.is-open .menu-icon__close {
@@ -254,7 +254,7 @@ body {
 	overflow-y: auto;
 	background-color: var(--mobile-menu-bg);
 	gap: 24px;
-	transition: transform 250ms ease-in-out;
+	transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body.menu-open .header {
@@ -303,7 +303,7 @@ body.menu-open .header {
 	width: 100%;
 	height: 510px;
 	background-color: #d9d9d9;
-	background-image: url("../images/hero-bg@1x.jpg");
+	background-image: url("/images/hero-bg@1x.jpg");
 	background-repeat: no-repeat;
 	background-position: 53% 50%;
 	background-size: cover;
@@ -315,7 +315,7 @@ body.menu-open .header {
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 	.hero {
-		background-image: url("../images/hero-bg@2x.jpg");
+		background-image: url("/images/hero-bg@2x.jpg");
 	}
 }
 
@@ -433,8 +433,8 @@ body.menu-open .header {
 	cursor: pointer;
 	border-radius: 16px;
 	transition:
-		transform 250ms ease-in-out,
-		box-shadow 250ms ease-in-out;
+		transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+		box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .product-card[data-product-trigger]:hover,
@@ -578,9 +578,9 @@ body.menu-open .header {
 	cursor: pointer;
 	flex-shrink: 0;
 	transition:
-		background-color 250ms ease-in-out,
-		border-color 250ms ease-in-out,
-		opacity 250ms ease-in-out;
+		background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+		border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+		opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .slider-nav-icon {
@@ -892,8 +892,8 @@ body.menu-open .header {
 	opacity: 0;
 	visibility: hidden;
 	transition:
-		opacity 250ms ease-in-out,
-		visibility 250ms ease-in-out;
+		opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+		visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-backdrop.is-open {
@@ -912,7 +912,7 @@ body.menu-open .header {
 	background-color: var(--modal-bg);
 	border-radius: 16px;
 	transform: translateY(16px);
-	transition: transform 250ms ease-in-out;
+	transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 	flex-shrink: 0;
 }
 
@@ -935,7 +935,7 @@ body.menu-open .header {
 	border-radius: 50%;
 	color: var(--primary-text);
 	cursor: pointer;
-	transition: opacity 250ms ease-in-out;
+	transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-close:hover,
@@ -987,7 +987,7 @@ body.menu-open .header {
 	background-color: transparent;
 	border: 1px solid var(--modal-input-border);
 	border-radius: 12px;
-	transition: border-color 250ms ease-in-out;
+	transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-field-input {
@@ -1014,6 +1014,28 @@ body.menu-open .header {
 .modal-field-textarea:focus-visible {
 	border-color: var(--modal-input-border-focus);
 	outline: none;
+}
+
+.modal-field-input.is-error,
+.modal-field-textarea.is-error {
+	border-color: var(--modal-input-border-error);
+	color: var(--modal-input-error-text);
+}
+
+.modal-field-input.is-error::placeholder,
+.modal-field-textarea.is-error::placeholder {
+	color: var(--modal-input-error-text);
+}
+
+.modal-field-error {
+	margin-top: 6px;
+	font-size: 12px;
+	line-height: 18px;
+	color: var(--modal-input-error-text);
+}
+
+.modal-field-error[hidden] {
+	display: none;
 }
 
 /* ================================ */
@@ -1124,13 +1146,26 @@ body.menu-open .header {
 	background-color: transparent;
 	border: 1px solid var(--modal-input-border);
 	border-radius: 12px;
-	transition: border-color 250ms ease-in-out;
+	transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .product-modal-quantity:hover,
 .product-modal-quantity:focus-visible {
 	border-color: var(--modal-input-border-focus);
 	outline: none;
+}
+
+.product-modal-quantity.is-error {
+	border-color: var(--modal-input-border-error);
+	color: var(--modal-input-error-text);
+}
+
+/* The error message sits below the action row and is aligned to the right
+   so it visually points back at the quantity input (which lives on the
+   right side of the row). Keep the same 6px gap as the Figma error spec. */
+.product-modal-quantity-error {
+	display: block;
+	text-align: right;
 }
 
 /* ================================ */

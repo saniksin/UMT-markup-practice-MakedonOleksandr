@@ -29,6 +29,8 @@
 	--modal-bg: #ffffff;
 	--modal-input-border: #030c0126;
 	--modal-input-border-focus: #030c01;
+	--modal-input-border-error: #af0000;
 	--modal-input-placeholder: #030c0199;
+	--modal-input-error-text: #af0000;
 	--modal-divider: #030c0126;
 }

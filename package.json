@@ -21,5 +21,8 @@
 		"axios": "^1.16.0",
 		"json-server": "^1.0.0-beta.15",
 		"vite": "^8.0.12"
+	},
+	"devDependencies": {
+		"vite-plugin-static-copy": "^4.1.0"
 	}
 }

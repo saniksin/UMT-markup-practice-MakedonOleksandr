@@ -45,11 +45,13 @@ function buildItemMarkup() {
 
 function fillItem(li, product) {
 	const image = li.querySelector(".bestsellers-card-image");
-	image.src = resolveImageUrl(product.img);
+	// srcset must be set before src so the browser picks the right DPR
+	// candidate up front and doesn't fetch both @1x and @2x.
 	const img2x = resolveImageUrl(product.img2x);
 	if (img2x) {
 		image.setAttribute("srcset", `${img2x} 2x`);
 	}
+	image.src = resolveImageUrl(product.img);
 	image.alt = product.alt ?? product.title ?? "";
 
 	li.querySelector(".product-card-title").textContent = product.title ?? "";
