@@ -156,12 +156,19 @@ function fillProductModal(card) {
 	// fetching it, then re-evaluates once srcset arrives and may start a
 	// second parallel fetch for a better-fitting candidate — leaving the
 	// initial @1x in flight (and visible as a canceled request later).
+	// `sizes` paired with a width-descriptor srcset tells the browser the
+	// rendered slot at each breakpoint. Kept here (not in HTML) because the
+	// validator rejects `sizes` without `srcset`, and srcset is computed at
+	// open-time from the clicked card.
 	if (src1x && src2x && w1 > 0) {
+		productImageRef.sizes = "(min-width: 1440px) 536px, (min-width: 768px) 308px, 295px";
 		productImageRef.srcset = `${src1x} ${w1}w, ${src2x} ${w1 * 2}w`;
 		productImageRef.src = src1x;
 	} else {
 		// Fall back to the original density form if we couldn't read the
-		// natural width (e.g. card image hasn't loaded yet).
+		// natural width (e.g. card image hasn't loaded yet). Density-descriptor
+		// srcsets don't need `sizes` — clear it to keep HTML semantics tight.
+		productImageRef.removeAttribute("sizes");
 		productImageRef.srcset = cardSrcset;
 		productImageRef.src = src1x;
 	}
