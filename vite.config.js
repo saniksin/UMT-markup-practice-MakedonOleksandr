@@ -68,6 +68,13 @@ function staticJsonServerEmitter({ source = "db.json", outDir = "api" } = {}) {
 
 export default defineConfig({
 	base,
+	build: {
+		// Pin esbuild's CSS target to a browser old enough that it WON'T rewrite
+		// `@media (min-resolution: 192dpi)` into the CSS Media Queries Level 4
+		// range syntax `(resolution>=192dpi)`. The jigsaw W3C CSS3 validator
+		// rejects the range form, even though every modern browser supports it.
+		cssTarget: ["chrome89", "firefox89", "edge89", "safari14"],
+	},
 	plugins: [
 		staticJsonServerEmitter(),
 		// Keep images/ in the project root (uni assignment requires it) but
