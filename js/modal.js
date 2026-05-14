@@ -151,14 +151,19 @@ function fillProductModal(card) {
 	const src2x = m2x ? m2x[1] : "";
 	const w1 = image.naturalWidth;
 
+	// Set srcset BEFORE src so the browser only kicks off the candidate it
+	// actually needs. If we set src first, the browser immediately starts
+	// fetching it, then re-evaluates once srcset arrives and may start a
+	// second parallel fetch for a better-fitting candidate — leaving the
+	// initial @1x in flight (and visible as a canceled request later).
 	if (src1x && src2x && w1 > 0) {
-		productImageRef.src = src1x;
 		productImageRef.srcset = `${src1x} ${w1}w, ${src2x} ${w1 * 2}w`;
+		productImageRef.src = src1x;
 	} else {
 		// Fall back to the original density form if we couldn't read the
 		// natural width (e.g. card image hasn't loaded yet).
-		productImageRef.src = src1x;
 		productImageRef.srcset = cardSrcset;
+		productImageRef.src = src1x;
 	}
 }
 

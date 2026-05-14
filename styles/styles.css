@@ -1125,6 +1125,10 @@ body.menu-open .header {
 	gap: 16px;
 	height: 44px;
 	margin-top: 8px;
+	/* Anchor for the absolutely positioned quantity error message — it
+	   hangs below the row so toggling it doesn't push the rest of the
+	   modal content down. */
+	position: relative;
 }
 
 .product-modal-buy {
@@ -1160,12 +1164,17 @@ body.menu-open .header {
 	color: var(--modal-input-error-text);
 }
 
-/* The error message sits below the action row and is aligned to the right
-   so it visually points back at the quantity input (which lives on the
-   right side of the row). Keep the same 6px gap as the Figma error spec. */
+/* The error sits absolutely below the actions row so toggling its visibility
+   never shifts the surrounding modal copy up or down. Right-aligned so it
+   points back at the quantity input on the right side of the row. */
 .product-modal-quantity-error {
+	position: absolute;
+	top: calc(100% + 6px);
+	right: 0;
+	margin: 0;
 	display: block;
 	text-align: right;
+	white-space: nowrap;
 }
 
 /* ================================ */
