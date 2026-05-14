@@ -12,8 +12,6 @@ const FOCUSABLE_SELECTOR = [
 ].join(",");
 
 const modalRefs = document.querySelectorAll("[data-modal]");
-const productTriggerRefs = document.querySelectorAll("[data-product-trigger]");
-const openTriggerRefs = document.querySelectorAll("[data-open-modal]");
 
 const productModalRef = document.getElementById("product-modal");
 const productImageRef = document.getElementById("product-modal-image");
@@ -118,10 +116,14 @@ function fillProductModal(card) {
 	productTitleRef.textContent = title;
 	productPriceRef.textContent = price;
 
-	// Use the shared product copy that matches the Figma spec body length
-	// (≈7 lines @ 14px on mobile). The card's own short blurb is intentionally
-	// not appended — the modal mock-up uses a single fixed description.
+	// API-rendered cards stash the long description in data-desc-long; the
+	// modal uses that when available, falls back to the short card blurb,
+	// and lastly to the Figma copy for hardcoded fallback content.
+	const longDesc = card.dataset?.descLong;
+	const shortDesc = card.querySelector(".product-card-text")?.textContent?.trim() ?? "";
 	productTextRef.textContent =
+		longDesc ||
+		shortDesc ||
 		"Each stem is carefully selected to create a bouquet that radiates freshness, elegance, and the gentle charm of spring. Whether you're celebrating a birthday, sending love, or simply brightening someone's day, this arrangement is sure to bring warm smiles and lasting impressions.";
 
 	if (!image) return;
@@ -160,29 +162,31 @@ function fillProductModal(card) {
 	}
 }
 
-/* ===== Wire up triggers ===== */
+/* ===== Wire up triggers (delegated so dynamically-rendered cards work) ===== */
 
-productTriggerRefs.forEach((card) => {
-	card.addEventListener("click", () => {
-		fillProductModal(card);
-		openModal(productModalRef, card);
-	});
+document.addEventListener("click", (event) => {
+	const productTrigger = event.target.closest("[data-product-trigger]");
+	if (productTrigger) {
+		fillProductModal(productTrigger);
+		openModal(productModalRef, productTrigger);
+		return;
+	}
 
-	card.addEventListener("keydown", (event) => {
-		if (event.key === "Enter" || event.key === " ") {
-			event.preventDefault();
-			fillProductModal(card);
-			openModal(productModalRef, card);
-		}
-	});
+	const openTrigger = event.target.closest("[data-open-modal]");
+	if (openTrigger) {
+		const targetId = openTrigger.getAttribute("data-open-modal");
+		const targetRef = document.getElementById(targetId);
+		openModal(targetRef, openTrigger);
+	}
 });
 
-openTriggerRefs.forEach((trigger) => {
-	trigger.addEventListener("click", () => {
-		const targetId = trigger.getAttribute("data-open-modal");
-		const targetRef = document.getElementById(targetId);
-		openModal(targetRef, trigger);
-	});
+document.addEventListener("keydown", (event) => {
+	if (event.key !== "Enter" && event.key !== " ") return;
+	const productTrigger = event.target.closest?.("[data-product-trigger]");
+	if (!productTrigger || event.target !== productTrigger) return;
+	event.preventDefault();
+	fillProductModal(productTrigger);
+	openModal(productModalRef, productTrigger);
 });
 
 /* ===== Close interactions ===== */
