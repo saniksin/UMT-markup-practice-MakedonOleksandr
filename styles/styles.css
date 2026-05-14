@@ -553,9 +553,8 @@ body.menu-open .header {
 	opacity: 0.2;
 }
 
-.bestsellers-dots li:first-child .bestsellers-dot {
-	opacity: 1;
-}
+/* Active dot is marked dynamically by JS via .is-active on the parent <li>
+   (see styles/shared.css → .bestsellers-dots li.is-active .bestsellers-dot). */
 
 .bestsellers-nav {
 	display: flex;
@@ -658,10 +657,7 @@ body.menu-open .header {
 .bouquets-list {
 	display: grid;
 	grid-template-columns: 1fr;
-	grid-template-rows: repeat(8, 1fr);
-	height: 3583px;
 	gap: 24px;
-	overflow: hidden;
 }
 
 .bouquets-item {
@@ -1426,14 +1422,12 @@ body.menu-open .header {
 
 	/* Bouquets */
 	.bouquets {
-		height: 2092px;
 		box-sizing: border-box;
 		padding: 64px 32px;
 		gap: 40px;
 	}
 
 	.bouquets-container {
-		height: 1880px;
 		padding: 0;
 		gap: 32px;
 	}
@@ -1448,10 +1442,7 @@ body.menu-open .header {
 
 	.bouquets-list {
 		grid-template-columns: repeat(2, 1fr);
-		grid-auto-rows: 425px;
 		gap: 24px;
-		height: 1772px;
-		overflow: hidden;
 	}
 
 	.bouquets-item {
@@ -1856,7 +1847,6 @@ body.menu-open .header {
 
 	/* Bouquets */
 	.bouquets {
-		height: 1337px;
 		box-sizing: border-box;
 		padding: 92px 80px 92px 80px;
 		gap: 40px;
@@ -1864,7 +1854,6 @@ body.menu-open .header {
 
 	.bouquets-container {
 		max-width: 1280px;
-		height: 1069px;
 		padding: 0;
 		gap: 32px;
 	}
@@ -1885,11 +1874,8 @@ body.menu-open .header {
 
 	.bouquets-list {
 		grid-template-columns: repeat(4, 1fr);
-		grid-template-rows: repeat(2, 1fr);
 		column-gap: 32px;
 		row-gap: 64px;
-		height: 944px;
-		overflow: hidden;
 	}
 
 	.bouquets-item {

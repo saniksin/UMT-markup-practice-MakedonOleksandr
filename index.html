@@ -53,12 +53,25 @@
 
 		<!-- Styles -->
 		<link rel="stylesheet" href="./styles/styles.css" />
+		<link rel="stylesheet" href="./styles/shared.css" />
 
 		<!-- Mobile menu -->
 		<script src="./js/mobile-menu.js" defer></script>
 
 		<!-- Modals -->
 		<script src="./js/modal.js" defer></script>
+
+		<!-- Strip lingering :hover/:focus state off CTAs after a click -->
+		<script src="./js/button-cooldown.js" defer></script>
+
+		<!-- Top-Selling Bouquets slider (API-backed) -->
+		<script type="module" src="./js/bestsellers-slider.js"></script>
+
+		<!-- Bouquets catalogue (API-backed, client-side pagination) -->
+		<script type="module" src="./js/catalogue.js"></script>
+
+		<!-- Testimonials slider (API-backed) -->
+		<script type="module" src="./js/feedback-slider.js"></script>
 	</head>
 	<body>
 		<!-- Navbar -->
@@ -162,92 +175,29 @@
 						<h2 class="section-title">Top-Selling Bouquets</h2>
 					</div>
 
-					<div class="bestsellers-body">
-						<ul class="bestsellers-list">
-							<li class="bestsellers-item">
-								<article class="product-card" tabindex="0" role="button" data-product-trigger>
-									<img
-										loading="lazy"
-										class="bestsellers-card-image"
-										src="./images/spring-elegance@1x.jpg"
-										srcset="./images/spring-elegance@2x.jpg 2x"
-										alt="Spring Elegance bouquet — a woman holding a beautiful spring flower bouquet"
-									/>
-									<div class="product-card-content">
-										<div class="product-card-header">
-											<h3 class="product-card-title">Spring Elegance</h3>
-											<p class="product-card-text">
-												A delicate blend of peonies, tulips, and roses — perfect for springtime gifting and bright
-												smiles.
-											</p>
-										</div>
-										<p class="product-card-price">$35</p>
-									</div>
-								</article>
-							</li>
+					<div class="bestsellers-body" aria-busy="true">
+						<div
+							id="bestsellers-loader"
+							class="content-loader"
+							role="status"
+							aria-live="polite"
+							aria-label="Loading top bouquets"
+						>
+							<span class="content-loader__spinner" aria-hidden="true"></span>
+						</div>
 
-							<li class="bestsellers-item">
-								<article class="product-card" tabindex="0" role="button" data-product-trigger>
-									<img
-										loading="lazy"
-										class="bestsellers-card-image"
-										src="./images/berry-chic@1x.jpg"
-										srcset="./images/berry-chic@2x.jpg 2x"
-										alt="Berry Chic bouquet — bridal arrangement with roses and berries"
-									/>
-									<div class="product-card-content">
-										<div class="product-card-header">
-											<h3 class="product-card-title">Berry Chic</h3>
-											<p class="product-card-text">
-												A stylish composition of roses, seasonal greenery, and vibrant berries — a bold and elegant
-												floral statement.
-											</p>
-										</div>
-										<p class="product-card-price">$40</p>
-									</div>
-								</article>
-							</li>
-
-							<li class="bestsellers-item">
-								<article class="product-card" tabindex="0" role="button" data-product-trigger>
-									<img
-										loading="lazy"
-										class="bestsellers-card-image"
-										src="./images/lavender-dream@1x.jpg"
-										srcset="./images/lavender-dream@2x.jpg 2x"
-										alt="Lavender Dream bouquet — mixed flowers on a wooden table"
-									/>
-									<div class="product-card-content">
-										<div class="product-card-header">
-											<h3 class="product-card-title">Lavender Dream</h3>
-											<p class="product-card-text">
-												A rich bouquet with lavender, lisianthus, and roses — ideal for those who love deep hues and
-												gentle fragrance.
-											</p>
-										</div>
-										<p class="product-card-price">$55</p>
-									</div>
-								</article>
-							</li>
-						</ul>
+						<ul class="bestsellers-list" id="bestsellers-list" aria-live="polite"></ul>
 
 						<div class="bestsellers-controls">
-							<ul class="bestsellers-dots">
-								<li><span class="bestsellers-dot"></span></li>
-								<li><span class="bestsellers-dot"></span></li>
-								<li><span class="bestsellers-dot"></span></li>
-								<li><span class="bestsellers-dot"></span></li>
-								<li><span class="bestsellers-dot"></span></li>
-								<li><span class="bestsellers-dot"></span></li>
-							</ul>
+							<ul class="bestsellers-dots" id="bestsellers-dots"></ul>
 
 							<div class="bestsellers-nav">
-								<button class="slider-nav-button" type="button" aria-label="Previous bouquets">
+								<button class="slider-nav-button" type="button" data-bestsellers-prev aria-label="Previous bouquets">
 									<svg class="slider-nav-icon">
 										<use href="./icons/sprite.svg#arrow_back"></use>
 									</svg>
 								</button>
-								<button class="slider-nav-button" type="button" aria-label="Next bouquets">
+								<button class="slider-nav-button" type="button" data-bestsellers-next aria-label="Next bouquets">
 									<svg class="slider-nav-icon">
 										<use href="./icons/sprite.svg#arrow_forward"></use>
 									</svg>
@@ -266,184 +216,21 @@
 						<p class="section-text">Explore our stunning selection of fresh flower bouquets.</p>
 					</div>
 
-					<ul class="bouquets-list">
-						<li class="bouquets-item">
-							<article class="product-card" tabindex="0" role="button" data-product-trigger>
-								<img
-									loading="lazy"
-									class="bouquets-card-image"
-									src="./images/peach-meadow@1x.jpg"
-									srcset="./images/peach-meadow@2x.jpg 2x"
-									alt="Peach Meadow — soft arrangement of peach and blush roses in a straw basket"
-								/>
-								<div class="product-card-content">
-									<div class="product-card-header">
-										<h3 class="product-card-title">Peach Meadow</h3>
-										<p class="product-card-text">
-											A soft and radiant arrangement of peach and blush roses with lush greenery in a straw basket —
-											light and natural.
-										</p>
-									</div>
-									<p class="product-card-price">$55</p>
-								</div>
-							</article>
-						</li>
-
-						<li class="bouquets-item">
-							<article class="product-card" tabindex="0" role="button" data-product-trigger>
-								<img
-									loading="lazy"
-									class="bouquets-card-image"
-									src="./images/blush-romance@1x.jpg"
-									srcset="./images/blush-romance@2x.jpg 2x"
-									alt="Blush Romance — deep pink and ivory roses with silver eucalyptus"
-								/>
-								<div class="product-card-content">
-									<div class="product-card-header">
-										<h3 class="product-card-title">Blush Romance</h3>
-										<p class="product-card-text">
-											A premium bouquet of deep pink and ivory roses, complemented by silver eucalyptus — sophisticated
-											and intimate.
-										</p>
-									</div>
-									<p class="product-card-price">$34</p>
-								</div>
-							</article>
-						</li>
-
-						<li class="bouquets-item">
-							<article class="product-card" tabindex="0" role="button" data-product-trigger>
-								<img
-									loading="lazy"
-									class="bouquets-card-image"
-									src="./images/pastel-garden@1x.jpg"
-									srcset="./images/pastel-garden@2x.jpg 2x"
-									alt="Pastel Garden — pastel-toned spray roses and greenery in a woven basket"
-								/>
-								<div class="product-card-content">
-									<div class="product-card-header">
-										<h3 class="product-card-title">Pastel Garden</h3>
-										<p class="product-card-text">
-											A pastel-toned mix of spray roses and greenery in a woven basket — gentle, airy, and perfect for
-											any occasion.
-										</p>
-									</div>
-									<p class="product-card-price">$40</p>
-								</div>
-							</article>
-						</li>
-
-						<li class="bouquets-item">
-							<article class="product-card" tabindex="0" role="button" data-product-trigger>
-								<img
-									loading="lazy"
-									class="bouquets-card-image"
-									src="./images/tulip-charm@1x.jpg"
-									srcset="./images/tulip-charm@2x.jpg 2x"
-									alt="Tulip Charm — bright tulips and roses in a lavender box"
-								/>
-								<div class="product-card-content">
-									<div class="product-card-header">
-										<h3 class="product-card-title">Tulip Charm</h3>
-										<p class="product-card-text">
-											A vivid bouquet of bright tulips and roses in a lavender box — cheerful and full of charm.
-										</p>
-									</div>
-									<p class="product-card-price">$61</p>
-								</div>
-							</article>
-						</li>
-
-						<li class="bouquets-item">
-							<article class="product-card" tabindex="0" role="button" data-product-trigger>
-								<img
-									loading="lazy"
-									class="bouquets-card-image"
-									src="./images/berry-bloom@1x.jpg"
-									srcset="./images/berry-bloom@2x.jpg 2x"
-									alt="Berry Bloom — rich pink, purple, and cream blooms with textured greens"
-								/>
-								<div class="product-card-content">
-									<div class="product-card-header">
-										<h3 class="product-card-title">Berry Bloom</h3>
-										<p class="product-card-text">
-											A lush mix of rich pink, purple, and cream blooms with textured greens — romantic and elegant.
-										</p>
-									</div>
-									<p class="product-card-price">$32</p>
-								</div>
-							</article>
-						</li>
-
-						<li class="bouquets-item">
-							<article class="product-card" tabindex="0" role="button" data-product-trigger>
-								<img
-									loading="lazy"
-									class="bouquets-card-image"
-									src="./images/sweet-whisper@1x.jpg"
-									srcset="./images/sweet-whisper@2x.jpg 2x"
-									alt="Sweet Whisper — spring bouquet with peonies, roses and lilac accents"
-								/>
-								<div class="product-card-content">
-									<div class="product-card-header">
-										<h3 class="product-card-title">Sweet Whisper</h3>
-										<p class="product-card-text">
-											A charming spring bouquet with peonies, roses, and lilac-toned accents — fresh, lively, and
-											expressive.
-										</p>
-									</div>
-									<p class="product-card-price">$40</p>
-								</div>
-							</article>
-						</li>
-
-						<li class="bouquets-item">
-							<article class="product-card" tabindex="0" role="button" data-product-trigger>
-								<img
-									loading="lazy"
-									class="bouquets-card-image"
-									src="./images/field-joy@1x.jpg"
-									srcset="./images/field-joy@2x.jpg 2x"
-									alt="Field Joy — rustic bouquet of sunflowers, lisianthus and daisies"
-								/>
-								<div class="product-card-content">
-									<div class="product-card-header">
-										<h3 class="product-card-title">Field Joy</h3>
-										<p class="product-card-text">
-											A rustic hand-tied bouquet of sunflowers, lisianthus, and daisies — perfect for brightening the
-											day.
-										</p>
-									</div>
-									<p class="product-card-price">$49</p>
-								</div>
-							</article>
-						</li>
-
-						<li class="bouquets-item">
-							<article class="product-card" tabindex="0" role="button" data-product-trigger>
-								<img
-									loading="lazy"
-									class="bouquets-card-image"
-									src="./images/soft-bloom@1x.jpg"
-									srcset="./images/soft-bloom@2x.jpg 2x"
-									alt="Soft Bloom — pink carnations and roses wrapped in satin paper"
-								/>
-								<div class="product-card-content">
-									<div class="product-card-header">
-										<h3 class="product-card-title">Soft Bloom</h3>
-										<p class="product-card-text">
-											A delicate bouquet of pink carnations and roses wrapped in satin paper — soft, stylish, and
-											versatile.
-										</p>
-									</div>
-									<p class="product-card-price">$37</p>
-								</div>
-							</article>
-						</li>
-					</ul>
+					<div class="bouquets-list-shell" aria-busy="true">
+						<div
+							id="bouquets-loader"
+							class="content-loader"
+							role="status"
+							aria-live="polite"
+							aria-label="Loading bouquets"
+						>
+							<span class="content-loader__spinner" aria-hidden="true"></span>
+						</div>
+						<ul class="bouquets-list" id="bouquets-list" aria-live="polite"></ul>
+					</div>
 				</div>
 
-				<button class="primary-button bouquets-button" type="button">Show More</button>
+				<button class="primary-button bouquets-button bouquets-show-more-button" type="button">Show More</button>
 			</section>
 
 			<!-- Testimonials -->
@@ -451,36 +238,25 @@
 				<div class="container feedback-container">
 					<h2 class="section-title feedback-title">What our clients says</h2>
 
-					<ul class="feedback-list">
-						<li class="feedback-item">
-							<blockquote class="feedback-quote">
-								<p>&ldquo;Flora made my anniversary unforgettable with their beautiful arrangement!&rdquo;</p>
-							</blockquote>
-							<p class="feedback-author">Emma T.</p>
-						</li>
+					<div
+						id="feedback-loader"
+						class="content-loader"
+						role="status"
+						aria-live="polite"
+						aria-label="Loading testimonials"
+					>
+						<span class="content-loader__spinner" aria-hidden="true"></span>
+					</div>
 
-						<li class="feedback-item">
-							<blockquote class="feedback-quote">
-								<p>Absolutely stunning bouquet! It looked even better than the photo and arrived right on time.</p>
-							</blockquote>
-							<p class="feedback-author">Daniel R.</p>
-						</li>
-
-						<li class="feedback-item">
-							<blockquote class="feedback-quote">
-								<p>The service was exceptional, and the flowers were fresh!</p>
-							</blockquote>
-							<p class="feedback-author">Olivia M.</p>
-						</li>
-					</ul>
+					<ul class="feedback-list" id="feedback-list" aria-live="polite"></ul>
 
 					<div class="feedback-nav">
-						<button class="slider-nav-button" type="button" aria-label="Previous testimonials">
+						<button class="slider-nav-button" type="button" data-feedback-prev aria-label="Previous testimonials">
 							<svg class="slider-nav-icon">
 								<use href="./icons/sprite.svg#arrow_back"></use>
 							</svg>
 						</button>
-						<button class="slider-nav-button" type="button" aria-label="Next testimonials">
+						<button class="slider-nav-button" type="button" data-feedback-next aria-label="Next testimonials">
 							<svg class="slider-nav-icon">
 								<use href="./icons/sprite.svg#arrow_forward"></use>
 							</svg>
