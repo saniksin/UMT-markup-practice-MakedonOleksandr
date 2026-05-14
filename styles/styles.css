@@ -303,7 +303,7 @@ body.menu-open .header {
 	width: 100%;
 	height: 510px;
 	background-color: #d9d9d9;
-	background-image: url("../images/hero-bg@1x.jpg");
+	background-image: url("/images/hero-bg@1x.jpg");
 	background-repeat: no-repeat;
 	background-position: 53% 50%;
 	background-size: cover;
@@ -315,7 +315,7 @@ body.menu-open .header {
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 	.hero {
-		background-image: url("../images/hero-bg@2x.jpg");
+		background-image: url("/images/hero-bg@2x.jpg");
 	}
 }
 
@@ -1016,6 +1016,28 @@ body.menu-open .header {
 	outline: none;
 }
 
+.modal-field-input.is-error,
+.modal-field-textarea.is-error {
+	border-color: var(--modal-input-border-error);
+	color: var(--modal-input-error-text);
+}
+
+.modal-field-input.is-error::placeholder,
+.modal-field-textarea.is-error::placeholder {
+	color: var(--modal-input-error-text);
+}
+
+.modal-field-error {
+	margin-top: 6px;
+	font-size: 12px;
+	line-height: 18px;
+	color: var(--modal-input-error-text);
+}
+
+.modal-field-error[hidden] {
+	display: none;
+}
+
 /* ================================ */
 /* Order Modal (mobile base) */
 /* ================================ */
@@ -1131,6 +1153,19 @@ body.menu-open .header {
 .product-modal-quantity:focus-visible {
 	border-color: var(--modal-input-border-focus);
 	outline: none;
+}
+
+.product-modal-quantity.is-error {
+	border-color: var(--modal-input-border-error);
+	color: var(--modal-input-error-text);
+}
+
+/* The error message sits below the action row and is aligned to the right
+   so it visually points back at the quantity input (which lives on the
+   right side of the row). Keep the same 6px gap as the Figma error spec. */
+.product-modal-quantity-error {
+	display: block;
+	text-align: right;
 }
 
 /* ================================ */

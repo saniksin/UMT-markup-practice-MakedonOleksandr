@@ -35,11 +35,14 @@ function buildBouquetsListItemShellMarkup() {
 
 function fillBouquetsListItem(listItem, product) {
 	const image = listItem.querySelector(".bouquets-card-image");
-	image.src = resolveImageUrl(product.img);
+	// Set srcset BEFORE src so the browser only fetches the candidate that
+	// matches its DPR — assigning src first kicks off a @1x request even on
+	// retina, then srcset triggers a second @2x fetch.
 	const img2x = resolveImageUrl(product.img2x);
 	if (img2x) {
 		image.setAttribute("srcset", `${img2x} 2x`);
 	}
+	image.src = resolveImageUrl(product.img);
 	image.alt = product.alt ?? product.title ?? "";
 
 	listItem.querySelector(".product-card-title").textContent = product.title ?? "";

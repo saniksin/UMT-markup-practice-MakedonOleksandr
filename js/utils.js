@@ -20,15 +20,11 @@ export function formatPriceUsd(priceValue) {
 	return `$${numericValue}`;
 }
 
-// Pre-resolve every image under /images/ so Vite emits hashed copies into
-// dist/assets and accounts for the GitHub Pages base path. db.json stores
-// paths like "./images/spring-elegance@1x.jpg"; at runtime we map them to
-// the build-time URL.
-const imageRegistry = import.meta.glob("../images/*", {
-	eager: true,
-	query: "?url",
-	import: "default",
-});
+// Resolve an image path against the deployed base URL. Pictures live in
+// /public/images/ so Vite copies them as-is (no hashing) — that means we
+// don't need any module-level glob and the browser only fetches the
+// specific @1x or @2x file the <img srcset> picks for its DPR.
+const BASE = import.meta.env.BASE_URL || "/";
 
 export function resolveImageUrl(rawPath) {
 	if (!rawPath || typeof rawPath !== "string") {
@@ -38,8 +34,7 @@ export function resolveImageUrl(rawPath) {
 		return rawPath;
 	}
 	const cleaned = rawPath.replace(/^\.?\/+/, "");
-	const key = `../${cleaned}`;
-	return imageRegistry[key] ?? rawPath;
+	return BASE + cleaned;
 }
 
 // Drop focus after a click so the button doesn't keep its :focus-visible

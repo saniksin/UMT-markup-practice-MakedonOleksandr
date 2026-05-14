@@ -483,10 +483,16 @@
 								id="product-modal-quantity"
 								name="quantity"
 								min="1"
-								value="1"
+								placeholder="1"
 								aria-label="Quantity"
+								aria-describedby="product-modal-quantity-error"
 							/>
 						</div>
+						<span
+							class="modal-field-error product-modal-quantity-error"
+							id="product-modal-quantity-error"
+							hidden
+						>Error text</span>
 					</div>
 				</div>
 			</div>
@@ -520,8 +526,10 @@
 							id="order-name"
 							name="name"
 							placeholder="Ann"
+							aria-describedby="order-name-error"
 							required
 						/>
+						<span class="modal-field-error" id="order-name-error" hidden>Error text</span>
 					</div>
 
 					<div class="modal-field">
@@ -532,8 +540,10 @@
 							id="order-phone"
 							name="phone"
 							placeholder="+1 (555) 123-4567"
+							aria-describedby="order-phone-error"
 							required
 						/>
+						<span class="modal-field-error" id="order-phone-error" hidden>Error text</span>
 					</div>
 
 					<div class="modal-field">
@@ -544,7 +554,9 @@
 							id="order-address"
 							name="address"
 							placeholder="456 Floral Ave, Sydney NSW 2000 AU"
+							aria-describedby="order-address-error"
 						/>
+						<span class="modal-field-error" id="order-address-error" hidden>Error text</span>
 					</div>
 
 					<div class="modal-field">
@@ -555,7 +567,9 @@
 							name="message"
 							placeholder="Type your message..."
 							rows="5"
+							aria-describedby="order-message-error"
 						></textarea>
+						<span class="modal-field-error" id="order-message-error" hidden>Error text</span>
 					</div>
 
 					<button type="submit" class="primary-button order-modal-submit">Go to Checkout</button>

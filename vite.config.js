@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { viteStaticCopy } from "vite-plugin-static-copy";
 
 const repo = process.env.GITHUB_REPOSITORY?.split("/")[1];
 const isGitHubActions = process.env.GITHUB_ACTIONS === "true";
@@ -67,7 +68,17 @@ function staticJsonServerEmitter({ source = "db.json", outDir = "api" } = {}) {
 
 export default defineConfig({
 	base,
-	plugins: [staticJsonServerEmitter()],
+	plugins: [
+		staticJsonServerEmitter(),
+		// Keep images/ in the project root (uni assignment requires it) but
+		// still ship them into dist/ on build. In dev Vite serves them as
+		// static files automatically.
+		viteStaticCopy({
+			// src points at the folder itself (not files) and dest is the
+			// dist-root — that gives dist/images/* without a nested folder.
+			targets: [{ src: "images", dest: "" }],
+		}),
+	],
 	server: {
 		port: 4000,
 		proxy: {
