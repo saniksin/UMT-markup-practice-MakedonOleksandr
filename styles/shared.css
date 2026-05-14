@@ -95,6 +95,29 @@
 	display: none;
 }
 
+/* End-of-collection message — shown once Show More has loaded the last
+   chunk. Matches the section's body copy size and stays muted so it reads
+   as a status note, not a feature. */
+.bouquets-end-message {
+	margin-top: 16px;
+	font-size: var(--font-regular);
+	line-height: 150%;
+	color: var(--primary-text);
+	opacity: 0.6;
+	text-align: center;
+}
+
+.bouquets-end-message[hidden] {
+	display: none;
+}
+
+/* `display: inline-flex` on .primary-button overrides the browser-default
+   [hidden] { display: none } rule. Bring the default back so toggling the
+   `hidden` attribute on Show More (and any other primary button) works. */
+.primary-button[hidden] {
+	display: none !important;
+}
+
 /* Override the static-height grids from styles.css — those were sized
    for exactly 8 cards. The API-backed catalogue can render any count.
    On mobile rows auto-fit (Figma has variable 419/440 px there); on
