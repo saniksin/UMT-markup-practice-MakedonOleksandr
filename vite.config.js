@@ -89,10 +89,12 @@ export default defineConfig({
 	server: {
 		port: 4000,
 		proxy: {
+			// Forward "/api/*" straight to the Flora backend WITHOUT stripping the
+			// prefix — the backend serves its routes under "/api/v1/...". Keeping
+			// the prefix means the browser talks same-origin (no CORS in dev).
 			"/api": {
 				target: "http://localhost:3001",
 				changeOrigin: true,
-				rewrite: (path) => path.replace(/^\/api/, ""),
 			},
 		},
 	},

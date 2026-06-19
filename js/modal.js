@@ -2,6 +2,10 @@
 /* Modal manager — Order + Product Details */
 /* ================================ */
 
+import { apiClient } from "./apiClient.js";
+import { showErrorNotification, showSuccessNotification } from "./notifications.js";
+import { extractErrorMessage } from "./utils.js";
+
 const FOCUSABLE_SELECTOR = [
 	"a[href]",
 	"button:not([disabled])",
@@ -328,8 +332,12 @@ if (orderFormRef) {
 		});
 	});
 
-	orderFormRef.addEventListener("submit", (event) => {
+	let isSubmitting = false;
+	const submitButton = orderFormRef.querySelector("button[type='submit']");
+
+	orderFormRef.addEventListener("submit", async (event) => {
 		event.preventDefault();
+		if (isSubmitting) return;
 
 		let firstInvalid = null;
 		validatable.forEach((field) => {
@@ -346,13 +354,37 @@ if (orderFormRef) {
 
 		const formData = new FormData(orderFormRef);
 		const data = Object.fromEntries(formData.entries());
-		const name = (data.name || "").toString().trim();
-		const phone = (data.phone || "").toString().trim();
+		const payload = {
+			name: (data.name || "").toString().trim(),
+			phone: (data.phone || "").toString().trim(),
+			address: (data.address || "").toString().trim(),
+			message: (data.message || "").toString().trim(),
+		};
 
-		alert(`Thank you, ${name}! We'll call you at ${phone} shortly.`);
+		// Lock the form while the request is in flight (prevents double submits).
+		isSubmitting = true;
+		const defaultLabel = submitButton?.textContent;
+		if (submitButton) {
+			submitButton.disabled = true;
+			submitButton.classList.add("is-loading");
+			submitButton.textContent = "Sending...";
+		}
 
-		orderFormRef.reset();
-		validatable.forEach((field) => clearFieldError(field));
-		closeModal();
+		try {
+			await apiClient.post("/orders", payload);
+			showSuccessNotification(`Thank you, ${payload.name}! We'll call you at ${payload.phone} shortly.`);
+			orderFormRef.reset();
+			validatable.forEach((field) => clearFieldError(field));
+			closeModal();
+		} catch (error) {
+			showErrorNotification(extractErrorMessage(error, "Could not place your order. Please try again."));
+		} finally {
+			isSubmitting = false;
+			if (submitButton) {
+				submitButton.disabled = false;
+				submitButton.classList.remove("is-loading");
+				submitButton.textContent = defaultLabel;
+			}
+		}
 	});
 }
