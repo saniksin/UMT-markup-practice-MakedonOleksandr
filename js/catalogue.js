@@ -42,19 +42,19 @@ function buildBouquetsListItemShellMarkup() {
 
 function fillBouquetsListItem(listItem, product) {
 	const image = listItem.querySelector(".bouquets-card-image");
-	const img2x = resolveImageUrl(product.img2x);
-	if (img2x) {
-		image.setAttribute("srcset", `${img2x} 2x`);
+	const photo2x = resolveImageUrl(product.photoURL2x);
+	if (photo2x) {
+		image.setAttribute("srcset", `${photo2x} 2x`);
 	}
-	image.src = resolveImageUrl(product.img);
+	image.src = resolveImageUrl(product.photoURL);
 	image.alt = product.alt ?? product.title ?? "";
 
 	listItem.querySelector(".product-card-title").textContent = product.title ?? "";
-	listItem.querySelector(".product-card-text").textContent = product.desc ?? "";
+	listItem.querySelector(".product-card-text").textContent = product.description ?? "";
 	listItem.querySelector(".product-card-price").textContent = formatPriceUsd(product.price);
 
-	if (product.descLong) {
-		listItem.querySelector(".product-card").dataset.descLong = product.descLong;
+	if (product.descriptionLong) {
+		listItem.querySelector(".product-card").dataset.descLong = product.descriptionLong;
 	}
 }
 
@@ -97,16 +97,15 @@ async function fetchPage(page) {
 		return slice;
 	}
 
-	const response = await apiClient.get("/products", {
-		params: { _page: page, _per_page: state.perPage },
+	const response = await apiClient.get("/bouquets", {
+		params: { page, perPage: state.perPage },
 	});
 	const data = response.data;
 
-	// json-server v1 paginated shape:
-	//   { first, prev, next, last, pages, items: <total count>, data: [...] }
-	// `items` is the total record count, the page slice itself sits in `data`.
+	// Flora backend paginated shape:
+	//   { data: [...], meta: { page, perPage, total, totalPages, hasNextPage, hasPrevPage } }
 	if (data && Array.isArray(data.data)) {
-		state.hasMore = data.next != null;
+		state.hasMore = data.meta?.hasNextPage === true;
 		return data.data;
 	}
 

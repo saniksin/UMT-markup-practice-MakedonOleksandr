@@ -79,6 +79,10 @@
 	border-color: #d64545;
 }
 
+.notification--success {
+	border-color: #3a8a3a;
+}
+
 /* ================================ */
 /* Bouquets — drop the hardcoded grid heights so 100 items can flow */
 /* ================================ */
