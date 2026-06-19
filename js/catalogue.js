@@ -53,8 +53,12 @@ function fillBouquetsListItem(listItem, product) {
 	listItem.querySelector(".product-card-text").textContent = product.description ?? "";
 	listItem.querySelector(".product-card-price").textContent = formatPriceUsd(product.price);
 
+	const card = listItem.querySelector(".product-card");
+	if (product.id != null) {
+		card.dataset.bouquetId = String(product.id);
+	}
 	if (product.descriptionLong) {
-		listItem.querySelector(".product-card").dataset.descLong = product.descriptionLong;
+		card.dataset.descLong = product.descriptionLong;
 	}
 }
 

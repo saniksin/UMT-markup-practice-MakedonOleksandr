@@ -58,8 +58,12 @@ function fillItem(li, product) {
 	li.querySelector(".product-card-text").textContent = product.description ?? "";
 	li.querySelector(".product-card-price").textContent = formatPriceUsd(product.price);
 
+	const card = li.querySelector(".product-card");
+	if (product.id != null) {
+		card.dataset.bouquetId = String(product.id);
+	}
 	if (product.descriptionLong) {
-		li.querySelector(".product-card").dataset.descLong = product.descriptionLong;
+		card.dataset.descLong = product.descriptionLong;
 	}
 }
 
