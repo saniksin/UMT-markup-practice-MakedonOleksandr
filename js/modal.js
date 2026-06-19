@@ -28,6 +28,10 @@ const orderFormRef = document.getElementById("order-form");
 
 let lastFocusedElement = null;
 let activeModal = null;
+// The bouquet shown in the product modal — carried into the order so it
+// references the chosen bouquet (and the quantity picked there).
+let selectedBouquetId = null;
+let selectedQuantity = 1;
 
 function getFocusable(modalRef) {
 	return Array.from(modalRef.querySelectorAll(FOCUSABLE_SELECTOR)).filter(
@@ -116,6 +120,9 @@ function fillProductModal(card) {
 	const title = card.querySelector(".product-card-title")?.textContent?.trim() ?? "";
 	const price = card.querySelector(".product-card-price")?.textContent?.trim() ?? "";
 	const image = card.querySelector("img");
+
+	// Remember which bouquet this modal represents (set on the card at render time).
+	selectedBouquetId = card.dataset.bouquetId ? Number(card.dataset.bouquetId) : null;
 
 	productTitleRef.textContent = title;
 	productPriceRef.textContent = price;
@@ -236,7 +243,8 @@ document.addEventListener("click", (event) => {
 		// Buy now lives inside the product modal — block the jump to the
 		// order modal if quantity is 0/empty/negative, just like the order
 		// form's submit gate.
-		if (openTrigger.classList.contains("product-modal-buy") && !isQuantityValid()) {
+		const isBuyNow = openTrigger.classList.contains("product-modal-buy");
+		if (isBuyNow && !isQuantityValid()) {
 			const message = quantityRef.value.trim()
 				? "Quantity must be greater than 0"
 				: "Please enter a quantity";
@@ -245,6 +253,15 @@ document.addEventListener("click", (event) => {
 			return;
 		}
 		const targetId = openTrigger.getAttribute("data-open-modal");
+		if (isBuyNow) {
+			// Carry the chosen quantity into the order (bouquet id was captured
+			// when the product modal opened).
+			selectedQuantity = Number.parseInt(quantityRef?.value, 10) || 1;
+		} else if (targetId === "order-modal") {
+			// Order opened directly (not from a bouquet) — no specific bouquet.
+			selectedBouquetId = null;
+			selectedQuantity = 1;
+		}
 		const targetRef = document.getElementById(targetId);
 		openModal(targetRef, openTrigger);
 	}
@@ -359,6 +376,8 @@ if (orderFormRef) {
 			phone: (data.phone || "").toString().trim(),
 			address: (data.address || "").toString().trim(),
 			message: (data.message || "").toString().trim(),
+			quantity: selectedQuantity,
+			bouquetId: selectedBouquetId,
 		};
 
 		// Lock the form while the request is in flight (prevents double submits).
